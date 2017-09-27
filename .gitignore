@@ -1,2 +1,4 @@
 /.idea
-/common.php
+/data.php
+/vendor/
+/composer.lock
