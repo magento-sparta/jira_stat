@@ -18,11 +18,11 @@ include __DIR__ . '/data.php';
 /**
  * @return chobie\Jira\Api
  */
-function getApiClient()
+function getApiClient($jira_host, $jira_user, $jira_pwd)
 {
 	$api = new \chobie\Jira\Api(
-	    "https://jira.host",
-		new \chobie\Jira\Api\Authentication\Basic("user", "password")
+        $jira_host,
+		new \chobie\Jira\Api\Authentication\Basic($jira_user, $jira_pwd)
 	);
 
 	return $api;
