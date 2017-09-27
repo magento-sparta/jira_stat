@@ -1,8 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require '~/.jira_stat';
 
-    /**
+$host = "";
+$user = "";
+$pwd  = "";
+
+/**
  * @return chobie\Jira\Api
  */
 function getApiClient()
