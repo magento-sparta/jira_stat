@@ -36,9 +36,21 @@ function getMonths($year)
     {
         $month = date('F', mktime(0,0,0,$m, 1, $year));
         $result[$month] = array(
+            'month'    => $month,
             'firstDay' => date("Y/m/d",strtotime("first day of $month $year")),
             'lastDay'  => date("Y/m/d",strtotime("last day of $month $year"))
         );
     }
     return $result;
+}
+
+function std_output($data)
+{
+    foreach ($data as $report => $row) {
+        echo $report . "\t";
+        foreach ($row as $value) {
+            echo $value . "\t";
+        }
+        echo "\n";
+    }
 }

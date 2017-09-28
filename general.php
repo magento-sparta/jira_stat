@@ -11,6 +11,7 @@ if (isset($reports['general'])) {
     foreach ($reports['general'] as $report => $jql) {
         $periods = getMonths($year);
         foreach ($periods as $month => $days) {
+            $result['Month'][$month] = $month;
             $walker->rewind();
             $current_jql = sprintf($jql, $month, $days['firstDay'], $days['lastDay']);
             $walker->push($current_jql);
@@ -20,4 +21,4 @@ if (isset($reports['general'])) {
     }
 }
 
-var_dump($result);
+std_output($result);
