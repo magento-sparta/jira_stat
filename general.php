@@ -13,7 +13,7 @@ if (isset($reports['general'])) {
         foreach ($periods as $month => $days) {
             $result['Month'][$month] = $month;
             $walker->rewind();
-            $current_jql = sprintf($jql, $month, $days['firstDay'], $days['lastDay']);
+            $current_jql = sprintf($jql, $days['firstDay'], $days['lastDay']);
             $walker->push($current_jql);
             $jqls[$report][$month] = $current_jql;
             $result[$report][$month] = $walker->count();
