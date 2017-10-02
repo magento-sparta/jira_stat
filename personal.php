@@ -4,7 +4,7 @@ require dirname(__FILE__) . '/common.php';
 $year   = isset($argv[1]) ? $argv[1] : date("Y");
 
 if (isset($reports['personal'])) {
-    $result = array('id', 'Name', 'login', 'Role', 'Location', 'Month', 'Project', 'Number');
+    $result = array(array('Name', 'login', 'Role', 'Location', 'Month', 'Project', 'Number'));
     $api    = getApiClient();
     $walker = new \chobie\Jira\Issues\Walker($api);
     foreach ($reports['personal']['accounts'] as $location => $data_loc) {
