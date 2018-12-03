@@ -44,6 +44,25 @@ function getMonths($year)
     return $result;
 }
 
+function getWeeks($year)
+{
+    $result = array();
+    $numberOfWeeks = date('W', strtotime('December 28th, ' . $year));
+    $date = new DateTime();
+    for ($w = 1; $w <= $numberOfWeeks; $w++)
+    {
+        $firstDay = date('Y/m/d', $date->setISODate($year, $w, 1)->getTimestamp());
+        $lastDay = date('Y/m/d', $date->setISODate($year, $w, 7)->getTimestamp());
+        $key = "Week #$w $firstDay - $lastDay";
+        $result[$w] = array(
+            'key'       => $key,
+            'firstDay'  => $firstDay,
+            'lastDay'   => $lastDay
+        );
+    }
+    return $result;
+}
+
 function std_output($data)
 {
     foreach ($data as $report => $row) {

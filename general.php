@@ -9,14 +9,14 @@ if (isset($reports['general'])) {
     $api    = getApiClient();
     $walker = new \chobie\Jira\Issues\Walker($api);
     foreach ($reports['general'] as $report => $jql) {
-        $periods = getMonths($year);
-        foreach ($periods as $month => $days) {
-            $result['Month'][$month] = $month;
+        $periods = getWeeks($year);
+        foreach ($periods as $key => $days) {
+            $result['Period'][$key] = $days['key'];
             $walker->rewind();
             $current_jql = sprintf($jql, $days['firstDay'], $days['lastDay']);
             $walker->push($current_jql);
-            $jqls[$report][$month] = $current_jql;
-            $result[$report][$month] = $walker->count();
+            $jqls[$report][$key] = $current_jql;
+            $result[$report][$key] = $walker->count();
         }
     }
 }
